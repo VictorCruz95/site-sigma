@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sigma Tecnologia e Inovação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --bg-dark: #02121f;
+      --bg-light: #f0f4f8;
+      --text-dark: #1a1a1a;
+      --text-light: #40b6d0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    nav.nav-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background: var(--bg-dark);
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+      position: relative;
+      gap: 2rem; /* Espaço entre logo e links */
+    }
+
+    .nav-logo {
+      height: 80px;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      height: 3px;
+      width: 25px;
+      background: var(--primary);
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: 1.2rem;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        margin-top: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+      }
+
+      .nav-logo {
+        height: 60px;
+      }
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      color: var(--bg-dark);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 1rem;
+    }
+
+    .servico {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border-left: 5px solid var(--primary);
+      transition: transform 0.2s;
+    }
+
+    .servico:hover {
+      transform: translateY(-5px);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    form input, form textarea {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    form button {
+      background: var(--primary);
+      color: #000;
+      padding: 1rem;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    form button:hover {
+      background: #00b0d6;
+    }
+
+    footer {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav-container">
+    <img src="images/logo.png" alt="Logo da empresa" class="nav-logo" />
+    <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </nav>
+
+  <section id="sobre">
+    <h2>Sobre a Sigma</h2>
+    <p style="font-size: 20px;">A Sigma Tecnologia e Inovação é uma empresa que nasceu com o propósito de transformar o setor industrial por meio da inovação. Contamos com uma equipe altamente especializada, formada por profissionais apaixonados por tecnologia e comprometidos com a excelência técnica.</p>
+    <br/>
+    <p style="font-size: 20px;">Trabalhamos com um conjunto de tecnologias avançadas como IoT, robótica, inteligência artificial e integração de software. Nossa missão é clara: superar expectativas, gerar valor e construir, junto aos nossos clientes, um futuro mais inteligente, automatizado e sustentável.</p>
+  </section>
+
+  <section id="servicos">
+    <h2>Serviços</h2>
+    <div class="servico">
+      <img src="images/image_1.webp" alt="Automação Industrial" style="width:100%; border-radius: 6px; margin-bottom: 1rem;">
+      <h3>Automação Industrial</h3>
+      <p>Desenvolvimento de sistemas que otimizam processos produtivos e aumentam a eficiência operacional.</p>
+    </div>
+    <div class="servico">
+      <img src="images/image_2.webp" alt="Integração de Software" style="width:100%; border-radius: 6px; margin-bottom: 1rem;">
+      <h3>Integração de Software</h3>
+      <p>Soluções que conectam plataformas e sistemas, garantindo controle e tomada de decisão em tempo real.</p>
+    </div>
+    <div class="servico">
+      <img src="images/image_4.webp" alt="Internet das Coisas" style="width:100%; border-radius: 6px; margin-bottom: 1rem;">
+      <h3>IoT (Internet das Coisas)</h3>
+      <p>Monitoramento inteligente com sensores e dispositivos conectados para transformar dados em ação.</p>
+    </div>
+    <div class="servico">
+      <img src="images/image_3.webp" alt="Robótica e Inteligência Artificial" style="width:100%; border-radius: 6px; margin-bottom: 1rem;">
+      <h3>Robótica e Inteligência Artificial</h3>
+      <p>Aplicações inovadoras que automatizam tarefas, reduzem erros e aceleram o crescimento das operações.</p>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <form action="https://formsubmit.co/sigma.tech@outlook.com.br" method="POST">
+      <input type="text" name="nome" placeholder="Seu nome" required />
+      <input type="email" name="email" placeholder="Seu e-mail" required />
+      <textarea name="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar mensagem</button>
+
+      <!-- Campos ocultos do Formsubmit -->
+      <input type="hidden" name="_subject" value="Nova mensagem do site Sigma!">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+    </form>
+  </section>
+
+
+  <footer>
+    <p>&copy; 2025 Sigma Tecnologia e Inovação. Todos os direitos reservados.</p>
+    <p>sigma.tech@outlook.com.br | (51) 99836-2847</p>
+  </footer>
+
+</body>
+</html>
