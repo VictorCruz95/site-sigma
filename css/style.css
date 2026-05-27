@@ -524,10 +524,10 @@ section.content-section {
 .valores-section {
   background: var(--bg-light);
   border-radius: 16px;
-  padding: 2.2rem 2rem;
+  padding: 2.2rem 2rem 2rem;
   border: 1px solid rgba(0, 212, 255, 0.1);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .valores-section::before {
@@ -556,19 +556,32 @@ section.content-section {
   color: var(--bg-dark);
 }
 
-.valores-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* Carrossel de valores */
+.valores-carousel {
+  position: relative;
+  padding: 0 28px;
+}
+
+.valores-track-wrapper {
+  overflow: hidden;
+}
+
+.valores-track {
+  display: flex;
   gap: 1rem;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .valor-item {
   background: var(--white);
   border-radius: 14px;
-  padding: 1.6rem 1.4rem;
+  padding: 1.8rem 1.6rem;
   border-left: 3px solid transparent;
   box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
   transition: transform 0.25s, border-left-color 0.25s, box-shadow 0.25s;
+  flex: 0 0 calc((100% - 2rem) / 3);
+  min-width: 0;
 }
 
 .valor-item:hover {
@@ -604,13 +617,72 @@ section.content-section {
   line-height: 1.65;
 }
 
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--white);
+  box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.2), 0 4px 16px rgba(0, 0, 0, 0.08);
+  color: var(--primary);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  z-index: 2;
+}
+
+.carousel-btn:hover {
+  background: var(--primary);
+  color: var(--bg-dark);
+  box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3);
+  transform: translateY(calc(-50% - 2px));
+}
+
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.carousel-prev { left: 0; }
+.carousel-next { right: 0; }
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.25);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: var(--primary);
+  transform: scale(1.3);
+}
+
 @media (max-width: 768px) {
   .mvv-cards {
     grid-template-columns: 1fr;
   }
 
-  .valores-grid {
-    grid-template-columns: 1fr 1fr;
+  .valor-item {
+    flex: 0 0 calc((100% - 1rem) / 2);
   }
 
   #mvv {
@@ -633,6 +705,10 @@ section.content-section {
 
   .valores-section {
     padding: 1.5rem 1.3rem;
+  }
+
+  .valor-item {
+    flex: 0 0 100%;
   }
 }
 

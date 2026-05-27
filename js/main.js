@@ -70,6 +70,76 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 counters.forEach(c => counterObserver.observe(c));
 
+// ── Valores carousel ──
+(function () {
+  const track = document.querySelector('.valores-track');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+  const dotsContainer = document.querySelector('.carousel-dots');
+  if (!track) return;
+
+  const items = Array.from(track.children);
+  let current = 0;
+
+  function visibleCount() {
+    if (window.innerWidth <= 480) return 1;
+    if (window.innerWidth <= 768) return 2;
+    return 3;
+  }
+
+  function maxIndex() {
+    return items.length - visibleCount();
+  }
+
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+    const count = maxIndex() + 1;
+    for (let i = 0; i < count; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === current ? ' active' : '');
+      dot.setAttribute('aria-label', 'Ir para slide ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function goTo(index) {
+    current = Math.max(0, Math.min(index, maxIndex()));
+    const itemWidth = items[0].offsetWidth + parseFloat(getComputedStyle(track).gap);
+    track.style.transform = `translateX(-${current * itemWidth}px)`;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current >= maxIndex();
+    dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      current = Math.min(current, maxIndex());
+      buildDots();
+      goTo(current);
+    }, 150);
+  });
+
+  buildDots();
+  goTo(0);
+
+  // Touch/swipe support
+  const wrapper = document.querySelector('.valores-track-wrapper');
+  let startX = 0;
+  wrapper.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  wrapper.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+  });
+})();
+
 // ── Form submit feedback ──
 document.querySelector('.contact-form')?.addEventListener('submit', function() {
   const btn = document.getElementById('btn-submit');
