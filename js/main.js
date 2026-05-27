@@ -140,6 +140,9 @@ counters.forEach(c => counterObserver.observe(c));
   });
 })();
 
+// ── Lucide icons ──
+lucide.createIcons();
+
 // ── Form submit feedback ──
 document.querySelector('.contact-form')?.addEventListener('submit', function() {
   const btn = document.getElementById('btn-submit');

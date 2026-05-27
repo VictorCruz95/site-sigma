@@ -405,9 +405,21 @@ section.content-section {
 .feature-item:hover { transform: translateX(4px); }
 
 .feature-icon {
-  font-size: 1.6rem;
   flex-shrink: 0;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(0, 212, 255, 0.08);
+  border-radius: 10px;
+  color: var(--primary);
+}
+
+.feature-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.8;
 }
 
 .feature-item h4 {
@@ -501,8 +513,10 @@ section.content-section {
 }
 
 .mvv-icon {
-  font-size: 1.8rem;
-  line-height: 1;
+  width: 28px;
+  height: 28px;
+  color: var(--primary);
+  stroke-width: 1.7;
 }
 
 .mvv-card h3 {
@@ -591,8 +605,6 @@ section.content-section {
 }
 
 .valor-icon {
-  font-size: 1.4rem;
-  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -602,6 +614,13 @@ section.content-section {
   border-radius: 12px;
   margin-bottom: 1rem;
   flex-shrink: 0;
+  color: var(--primary);
+}
+
+.valor-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.8;
 }
 
 .valor-item h4 {
@@ -795,6 +814,16 @@ section.content-section {
   font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.servico-body h3 svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.8;
+  flex-shrink: 0;
 }
 
 .servico-body p {
@@ -1045,10 +1074,21 @@ footer {
 
 /* ── STAT ICONS ── */
 .stat-item .stat-icon {
-  font-size: 1.7rem;
-  display: block;
-  margin-bottom: 0.35rem;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.6rem;
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 12px;
+  color: var(--primary);
+}
+
+.stat-item .stat-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.8;
 }
 
 /* ── HERO TECH TAGS ── */
@@ -1070,6 +1110,17 @@ footer {
   font-weight: 600;
   letter-spacing: 0.02em;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hero-tech-tags span svg {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2;
+  color: var(--primary);
+  flex-shrink: 0;
 }
 
 .hero-tech-tags span:hover {
