@@ -584,11 +584,6 @@ section.content-section {
   position: relative;
 }
 
-.valores-carousel-inner {
-  position: relative;
-  padding: 0 48px;
-}
-
 .valores-track-wrapper {
   overflow: hidden;
 }
@@ -609,6 +604,7 @@ section.content-section {
   transition: transform 0.25s, border-left-color 0.25s, box-shadow 0.25s;
   flex: 0 0 calc((100% - 2rem) / 3);
   min-width: 0;
+  box-sizing: border-box;
 }
 
 .valor-item:hover {
@@ -649,12 +645,17 @@ section.content-section {
   line-height: 1.65;
 }
 
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
 .carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: none;
   background: var(--white);
@@ -666,14 +667,14 @@ section.content-section {
   align-items: center;
   justify-content: center;
   transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-  z-index: 2;
+  flex-shrink: 0;
 }
 
 .carousel-btn:hover {
   background: var(--primary);
   color: var(--bg-dark);
   box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3);
-  transform: translateY(calc(-50% - 2px));
+  transform: translateY(-2px);
 }
 
 .carousel-btn:disabled {
@@ -682,14 +683,10 @@ section.content-section {
   pointer-events: none;
 }
 
-.carousel-prev { left: 0; }
-.carousel-next { right: 0; }
-
 .carousel-dots {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 1.4rem;
 }
 
 .carousel-dot {
