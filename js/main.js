@@ -24,7 +24,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 // ── Active nav link ──
 function updateActiveLink() {
-  const sections = ['sobre', 'servicos', 'contato'];
+  const sections = ['sobre', 'mvv', 'servicos', 'contato'];
   const scrollY = window.scrollY + 120;
   let current = '';
   sections.forEach(id => {
