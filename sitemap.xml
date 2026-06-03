@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://sigmatechinovacao.com.br/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://sigmatechinovacao.com.br/" />
+    <image:image>
+      <image:loc>https://sigmatechinovacao.com.br/images/logo.png</image:loc>
+      <image:title>Sigma Tecnologia e Inovação</image:title>
+      <image:caption>Logo da Sigma Tecnologia e Inovação</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sigmatechinovacao.com.br/images/image_1.webp</image:loc>
+      <image:title>Automação Industrial</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sigmatechinovacao.com.br/images/image_2.webp</image:loc>
+      <image:title>Desenvolvimento e Integração de Software</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sigmatechinovacao.com.br/images/image_3.webp</image:loc>
+      <image:title>Robótica e Inteligência Artificial</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sigmatechinovacao.com.br/images/image_4.webp</image:loc>
+      <image:title>Internet das Coisas (IoT)</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sigmatechinovacao.com.br/images/image_5.webp</image:loc>
+      <image:title>Outsourcing de TI</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sigmatechinovacao.com.br/images/image1.webp</image:loc>
+      <image:title>Análise Inteligente de Dados</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sigmatechinovacao.com.br/#sobre</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://sigmatechinovacao.com.br/#mvv</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sigmatechinovacao.com.br/#servicos</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://sigmatechinovacao.com.br/#contato</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

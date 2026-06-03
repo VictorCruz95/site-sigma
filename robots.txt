@@ -1,0 +1,37 @@
+# robots.txt - Sigma Tecnologia e Inovação
+# https://sigmatechinovacao.com.br/
+
+User-agent: *
+Allow: /
+Disallow: /obrigado.html
+
+# Bloqueio de arquivos sensíveis ou irrelevantes
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.claude/
+Disallow: /.DS_Store
+
+# Permitir indexação completa de imagens e assets
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Googlebot - indexação completa
+User-agent: Googlebot
+Allow: /
+Disallow: /obrigado.html
+
+# Googlebot-Image - permitir todas as imagens
+User-agent: Googlebot-Image
+Allow: /images/
+
+# Bingbot - indexação completa
+User-agent: Bingbot
+Allow: /
+Disallow: /obrigado.html
+
+# Sitemap
+Sitemap: https://sigmatechinovacao.com.br/sitemap.xml
+
+# Host preferencial
+Host: https://sigmatechinovacao.com.br
