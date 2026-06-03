@@ -1239,7 +1239,7 @@ footer {
 
 /* ── WHATSAPP FLOAT ── */
 .whatsapp-float {
-  display: none;
+  display: flex;
   position: fixed;
   bottom: 5.5rem;
   right: 2rem;
