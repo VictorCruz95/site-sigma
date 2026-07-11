@@ -149,3 +149,27 @@ document.querySelector('.contact-form')?.addEventListener('submit', function() {
   btn.disabled = true;
   btn.textContent = '⏳ Enviando...';
 });
+
+// ── Parallax do fundo do hero (segue o mouse) ──
+(function () {
+  const hero = document.getElementById('hero');
+  const heroBg = hero?.querySelector('.hero-bg');
+  if (!hero || !heroBg) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let raf = null;
+  hero.addEventListener('mousemove', e => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;   // -0.5 .. 0.5
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      heroBg.style.backgroundPosition =
+        `calc(50% + ${x * -20}px) calc(50% + ${y * -20}px)`;
+      raf = null;
+    });
+  });
+  hero.addEventListener('mouseleave', () => {
+    heroBg.style.backgroundPosition = '50% 50%';
+  });
+})();

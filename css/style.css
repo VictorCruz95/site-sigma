@@ -170,29 +170,68 @@ nav.nav-container.scrolled {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 2;
   background:
     radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0,212,255,0.12) 0%, transparent 70%),
     radial-gradient(ellipse 40% 40% at 80% 80%, rgba(0,168,204,0.08) 0%, transparent 60%);
   pointer-events: none;
 }
 
+/* Imagem de fundo gerada por IA (rede neural) — identidade da marca */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url('../images/hero-bg.jpg') center / cover no-repeat;
+  background-color: var(--bg-dark);
+  transform: scale(1.08);
+  will-change: transform, background-position;
+  transition: background-position 0.4s ease-out;
+  animation: heroBgDrift 26s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* Scrim: escurece o centro (legibilidade do texto) e funde a base com a seção seguinte */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 58% 60% at 50% 45%, rgba(2,18,31,0.82) 0%, rgba(2,18,31,0.35) 55%, transparent 100%),
+    linear-gradient(to bottom, rgba(2,18,31,0.55) 0%, transparent 28%, transparent 68%, var(--bg-dark) 100%);
+}
+
 .hero-grid {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background-image:
     linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
+  animation: heroGridDrift 40s linear infinite;
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   max-width: 800px;
 }
 
+/* Entrada escalonada dos elementos do hero */
+.hero-content > * {
+  opacity: 0;
+  animation: heroReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-content > *:nth-child(1) { animation-delay: 0.15s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.30s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.45s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.60s; }
+.hero-content > *:nth-child(5) { animation-delay: 0.75s; }
+
 .hero-badge {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -206,6 +245,16 @@ nav.nav-container.scrolled {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
+}
+
+/* Pulso de brilho ao redor do badge (independente da animação de entrada) */
+.hero-badge::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50px;
+  pointer-events: none;
+  animation: badgeGlow 3s ease-in-out infinite;
 }
 
 .hero-badge svg {
@@ -225,6 +274,17 @@ nav.nav-container.scrolled {
 
 .hero h1 span {
   color: var(--primary);
+}
+
+/* Palavra em destaque com gradiente ciano animado */
+.hero h1 .gradient-text {
+  background: linear-gradient(90deg, #00a8cc, #00d4ff, #8be9ff, #00d4ff, #00a8cc);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: heroGradientShift 7s linear infinite;
 }
 
 .hero-sub {
@@ -292,6 +352,7 @@ nav.nav-container.scrolled {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  z-index: 3;
   animation: bounce 2s infinite;
 }
 
@@ -305,6 +366,51 @@ nav.nav-container.scrolled {
 @keyframes bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ── ANIMAÇÕES DO HERO ── */
+@keyframes heroReveal {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Ken Burns lento no fundo gerado por IA */
+@keyframes heroBgDrift {
+  from { transform: scale(1.08) translate(0, 0); }
+  to   { transform: scale(1.14) translate(-1.5%, -1.2%); }
+}
+
+/* Deriva contínua da grade */
+@keyframes heroGridDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 60px; }
+}
+
+/* Pulso de brilho do badge */
+@keyframes badgeGlow {
+  0%, 100% { box-shadow: 0 0 12px 0 rgba(0,212,255,0.20); }
+  50%      { box-shadow: 0 0 24px 4px rgba(0,212,255,0.55); }
+}
+
+/* Deslocamento do gradiente na palavra em destaque */
+@keyframes heroGradientShift {
+  from { background-position: 0% 50%; }
+  to   { background-position: 250% 50%; }
+}
+
+/* Acessibilidade: desativa movimento para quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg,
+  .hero-grid,
+  .hero-badge::after,
+  .hero h1 .gradient-text,
+  .hero-scroll,
+  .hero-content > * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .hero-content > * { opacity: 1; transform: none; }
+  .hero-bg { transform: scale(1.05); }
 }
 
 /* ── STATS ── */
